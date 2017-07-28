@@ -6,6 +6,12 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dataStorage.StockMetaData;
+
 public class StockGrabThread implements Runnable {
 
 	//Constants
@@ -64,7 +70,23 @@ public class StockGrabThread implements Runnable {
 					}
 		    }
 		//process the json
-		System.out.println(json);
+		System.out.println(json);//Testing method
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			StockMetaData metaData = mapper.readValue(json,StockMetaData.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 /**
  * https://www.alphavantage.co/query?
@@ -81,6 +103,7 @@ public class StockGrabThread implements Runnable {
 		url+= "&symbol="+stockSymbol;
 		url+= "&interval="+MINUTE;
 		url+= "&apikey=" + ALPHA_VANTAGE_KEY;
+		//Add duration here
 		return url;
 	}
 
