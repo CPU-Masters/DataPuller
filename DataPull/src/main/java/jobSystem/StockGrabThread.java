@@ -72,20 +72,10 @@ public class StockGrabThread implements Runnable {
 		//process the json
 		System.out.println(json);//Testing method
 		
-		ObjectMapper mapper = new ObjectMapper();
+		//ObjectMapper mapper = new ObjectMapper();
 		
-		try {
-			StockMetaData metaData = mapper.readValue(json,StockMetaData.class);
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//	StockMetaData metaData = mapper.readValue(json,StockMetaData.class);
+		
 		
 	}
 /**
