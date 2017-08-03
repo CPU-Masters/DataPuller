@@ -1,4 +1,4 @@
-package tests;
+package dataStorage;
 
 import java.io.FileReader;
 import java.io.IOException;
