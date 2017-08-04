@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import dataStorage.Stock;
 import dataStorage.StockMetaData;
 
 public class StockGrabThread implements Runnable {
@@ -72,6 +73,8 @@ public class StockGrabThread implements Runnable {
 		//process the json
 		System.out.println(json);//Testing method
 		
+		Stock s = new Stock();
+		s.loadInStockData(json);
 		//ObjectMapper mapper = new ObjectMapper();
 		
 		//	StockMetaData metaData = mapper.readValue(json,StockMetaData.class);
