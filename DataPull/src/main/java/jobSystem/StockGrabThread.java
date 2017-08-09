@@ -73,7 +73,7 @@ public class StockGrabThread implements Runnable {
 		//process the json
 		System.out.println(json);//Testing method
 		
-		Stock s = new Stock();
+		Stock s = new Stock(stockSymbol);
 		s.loadInStockData(json);
 		//ObjectMapper mapper = new ObjectMapper();
 		

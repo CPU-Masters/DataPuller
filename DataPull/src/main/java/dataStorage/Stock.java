@@ -24,6 +24,10 @@ public class Stock {
 	
 	private String info, symbol, lastRefreshed, interval, outputSize, timeZone;
 	
+	public Stock(String stockSymbol) {
+		this.setSymbol(stockSymbol);
+	}
+
 	public void loadInStockData(InputStream in) {
 		this.loadInStockData(Json.createReader(in));
 	}
@@ -47,12 +51,20 @@ public class Stock {
 
 	 private final void parseMetadata(JsonObject metadata) {
 		    info = metadata.getString("1. Information");
-		    symbol = metadata.getString("2. Symbol");
+		    setSymbol(metadata.getString("2. Symbol"));
 		    lastRefreshed = metadata.getString("3. Last Refreshed");
 		    interval = metadata.getString("4. Interval");
 		    outputSize = metadata.getString("5. Output Size");
 		    timeZone = metadata.getString("6. Time Zone");
 		  }
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
 
 	public class StockTimePoint {
 		private String time;
@@ -70,4 +82,6 @@ public class Stock {
 	      }
 	    
 	}
+	
+	
 }
